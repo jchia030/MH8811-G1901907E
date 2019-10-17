@@ -28,7 +28,10 @@ def deserialize(string):
     if (a[0]!='dict'):
         lst=[]
         for i in range(1,len(a)-1,2):
+            if a[i+1]!='str':
                 b=eval(a[i+1]+'('+a[i]+')')
+            else:
+                b=str(a[i+1])
                 lst.append(b)
         if (a[0]=='set')|(a[0]=='tuple'):
             lst=eval(str(a[0])+'(lst)')
@@ -36,8 +39,14 @@ def deserialize(string):
     else:
         dct={}
         for i in range(1,len(a)-1,4):
+            if a[i+1]!='str':
                 b=eval(a[i+1]+'('+a[i]+')')
+            else:
+                b=str(a[i])
+            if a[i+3]!='str':
                 c=eval(a[i+3]+'('+a[i+2]+')')
+            else:
+                c=str(a[i+2])
                 dct[b]=c
         return dct
         
