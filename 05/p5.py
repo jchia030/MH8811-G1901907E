@@ -4,7 +4,8 @@ import json
 
 def serialize(lst):
     string=str(type(lst).__name__)
-    if (type(lst)==list)|(type(lst)==tuple)|(type(lst)==set):
+    string+='|'
+    if (type(lst)!=dict):
         for i in lst:
             string+=str(i)
             string+='|'
@@ -24,20 +25,20 @@ def serialize(lst):
     
 def deserialize(string):
     a=string.split('|')
-    if (a[0]=='list')|(a[0]=='set')|(a[0]=='tuple'):
+    if (a[0]!='dict'):
         lst=[]
         for i in range(1,len(a)-1,2):
-            b=eval(a[i+1]+'('+a[i]+')')
-            lst.append(b)
+                b=eval(a[i+1]+'('+a[i]+')')
+                lst.append(b)
         if (a[0]=='set')|(a[0]=='tuple'):
-            lst=eval(a[0]+'('+lst+')')
+            lst=eval(str(a[0])+'(lst)')
         return lst
     else:
         dct={}
         for i in range(1,len(a)-1,4):
-            b=eval(a[i+1]+'('+a[i]+')')
-            c=eval(a[i+3]+'('+a[i+2]+')')
-            dct[b]=c
+                b=eval(a[i+1]+'('+a[i]+')')
+                c=eval(a[i+3]+'('+a[i+2]+')')
+                dct[b]=c
         return dct
         
 def compare(lst1,lst2):
