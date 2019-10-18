@@ -1,3 +1,7 @@
+import random
+import string
+import re
+
 def genPassword(n):
     i=0
     while i<4:    
