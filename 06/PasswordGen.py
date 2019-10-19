@@ -16,4 +16,5 @@ def genPassword(n):
             i+=1
     return password
     
-print(genPassword(12))
+If __name__=="__main__":
+    print(genPassword(12))
