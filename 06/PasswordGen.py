@@ -10,7 +10,7 @@ def genPassword(n):
             i+=1
         if re.search(r'[A-Z]',password):
             i+=1
-        if re.search(r'/d',password):
+        if re.search(r'[0-9]',password):
             i+=1
         if re.search(r'[@_!#$%^&*()<>?/\|}{~:]',password):
             i+=1
