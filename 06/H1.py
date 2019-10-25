@@ -1,4 +1,4 @@
-from genPassword import Passwordgen
+from Passwordgen import genPassword
 
 length=input('How long is your password?')
 while length<4:
